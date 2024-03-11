@@ -1,9 +1,9 @@
 # EXPERIMENT-NO--04-Distance measurement using Ultrasonic sensor
- ###  DATE: 
+ ###  DATE: 11/3/24
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT:
+###  NAME: Mohammed Amjath
+###  ROLL NO :212221083009
+###  DEPARTMENT:mechanical
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
  
@@ -39,7 +39,7 @@ distance to an object = ((speed of sound in the air)*time)/2
 speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### FIGURE 01 CIRCUIT OF INTERFACING ULTRASONIC SENSOR 
-
+"C:\Users\amjath m\OneDrive\Pictures\Screenshots\Screenshot 2024-03-11 121010.png"
 
 ![image](https://user-images.githubusercontent.com/36288975/166430594-5adb4ca9-5a42-4781-a7e6-7236b3766a85.png)
 
@@ -58,7 +58,48 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 10.	Plot the graph for the output voltage vs the resistance 
 
 
-### PROGRAM 
+### PROGRAM
+const int tPin=10;
+const int ePin=9; 
+int red=7;
+int blue=6;
+long duration;
+float distance;
+void setup()
+{
+  pinMode(tPin, OUTPUT);
+  pinMode(ePin, INPUT);
+  pinMode(red,OUTPUT);
+  pinMode(blue,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  digitalWrite(tPin,LOW);
+  delay(20);
+  digitalWrite(tPin,HIGH);
+  delay(20);
+  digitalWrite(tPin,LOW);
+  duration=pulseIn(ePin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print(distance);
+  Serial.println("cms");
+  if(distance>5)
+  {
+   digitalWrite(red,HIGH);
+   delay(200);
+   digitalWrite(red,LOW);
+   delay(200);
+  }
+  else
+  {
+    digitalWrite(blue,HIGH);
+    delay(200);
+    digitalWrite(blue,LOW);
+    delay(200);
+  } 
+} 
 ```
 
 
@@ -73,7 +114,7 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 `````````
 
 
-### Distance vs measurement table 
+### Distance vs measurement table "C:\Users\amjath m\OneDrive\Pictures\Screenshots\Screenshot 2024-03-11 121033.png"
 
 			
  
@@ -82,7 +123,7 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 			
 
 ![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
-
+"C:\Users\amjath m\OneDrive\Pictures\Screenshots\Screenshot 2024-03-11 121042.png"
 			
 			
 			
